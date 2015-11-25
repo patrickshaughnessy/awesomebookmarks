@@ -15,7 +15,7 @@ myApp.config(["$urlRouterProvider", "$stateProvider", function($urlRouterProvide
 			controller: "newlinkCtrl"
 		})
 		.state("tag", {
-			url: "/tag",
+			url: "/tag/:tagname",
 			templateUrl: "partials/tag.html",
 			controller: "tagCtrl"
 		})

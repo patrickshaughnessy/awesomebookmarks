@@ -12,6 +12,17 @@ myApp.service("LinkService",[ "$http", function($http){
 		});
 	};
 
+	this.tagLinks = function(tagName){
+		console.log(this.links)
+		return this.links.filter(function(link){
+			return link.tag.some(function(tag){
+				if(tag === tagName){
+					return link;
+				}
+			})
+		})
+	}
+
 
 }]);
 
