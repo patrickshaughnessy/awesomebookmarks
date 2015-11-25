@@ -23,12 +23,13 @@ myApp.controller("newlinkCtrl", ["LinkService","$scope", function(LinkService, $
 
 }]);
 
-myApp.controller("tagCtrl", ["$scope", function($scope){
+myApp.controller("tagCtrl", ["LinkService", "$scope", function(LinkService, $scope){
 	$scope.title = "TAG"
+	
 
 }]);
 
-myApp.controller("tagsCtrl", ["$scope", function($scope){
+myApp.controller("tagsCtrl", ["LinkService", "$scope", function(LinkService, $scope){
 	$scope.title = "TAGS"
 
 }]);

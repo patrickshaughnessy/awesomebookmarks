@@ -6,10 +6,9 @@ myApp.service("LinkService",[ "$http", function($http){
 	this.links = [];
 
 	this.addLink = function(link){
-		$http.post("/api/add", link).then(function(res) {
-			this.links.push(res);
-			console.log(res)
-			console.log(this.links)
+		this.links.push(link);
+		$http.post("http://localhost:3005/api/add", link).then(function(res) {
+			console.log(res);
 		});
 	};
 
