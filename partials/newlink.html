@@ -1,0 +1,13 @@
+<h2>{{title}}</h2>
+
+<form ng-submit="submitForm()">
+	<input type="text" ng-model="newLink.link" placeholder="link">
+	<input type="text" ng-repeat="tag in newLink.tags track by $index" ng-model="newLink.tags[$index]" placeholder="tag">
+	<div>
+	<button type="submit">submit</button>
+	<button ng-click="addTag()">add tag</button>
+	</div>
+
+
+
+</form>

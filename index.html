@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="myApp" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>awesome Bookmarks</title>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="app.js"></script>
+	<script src="config/controllers.js"></script>
+	<script src="config/services.js"></script>
+
+</head>
+<body>
+	<div class="heading">
+		<h1> AWESOME BOOMARKS!!!!!</h1>
+		<button ui-sref="main">main</button>
+		<button ui-sref="tag">tag</button>
+		<button ui-sref="tags">tags</button>
+		<button ui-sref="newlink">new Link or tag</button>
+	</div>
+	<div ui-view></div>
+
+</body>
+</html>
