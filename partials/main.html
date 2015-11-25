@@ -5,7 +5,10 @@
 		<a href="">{{link.link}}</a>
 	</div>
 	<div>
-		<a ng-repeat="tag in link.tags" ui-sref="">{{tag}}</a>
+		<ul>
+			<li ng-repeat="tag in link.tags">
+				<button class="btn btn-default" ng-click="goToTag(tag)">{{tag}}</button>
+			</li>
+		</ul>
 	</div>
 </div>
-

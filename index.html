@@ -3,6 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>awesome Bookmarks</title>
+
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
 	<script src="bower_components/angular/angular.min.js"></script>
 	<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="app.js"></script>
@@ -13,12 +16,14 @@
 <body>
 	<div class="heading">
 		<h1> AWESOME BOOMARKS!!!!!</h1>
-		<button ui-sref="main">main</button>
-		<button ui-sref="tag">tag</button>
-		<button ui-sref="tags">tags</button>
-		<button ui-sref="newlink">new Link or tag</button>
+		<button class="btn btn-default" ui-sref="main">main</button>
+		<button class="btn btn-default" ui-sref="tags">tags</button>
+		<button class="btn btn-default" ui-sref="newlink">new Link or tag</button>
 	</div>
 	<div ui-view></div>
 
+
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

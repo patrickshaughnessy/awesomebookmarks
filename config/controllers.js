@@ -2,14 +2,18 @@
 
 var myApp = angular.module("myApp");
 
-myApp.controller("mainCtrl", ["LinkService","$scope", function(LinkService, $scope){
+myApp.controller("mainCtrl", ["$state", "links", "LinkService", "$scope", function($state, links, LinkService, $scope){
 	$scope.title = "MAIN HTMLE PAGE !!!"
-	$scope.links = LinkService.links
-	console.log($scope.links)
+	LinkService.links = links;
+	$scope.links = LinkService.links;
+
+	$scope.goToTag = function(tagName){
+		$state.go('tag', {tagname: tagName});
+	}
 
 }]);
 
-myApp.controller("newlinkCtrl", ["LinkService","$scope", function(LinkService, $scope){
+myApp.controller("newlinkCtrl", ["LinkService", "$scope", function(LinkService, $scope){
 	$scope.title = "NEW LINK"
 	$scope.newLink = {tags: []};
 	$scope.addTag = function(){
@@ -25,11 +29,19 @@ myApp.controller("newlinkCtrl", ["LinkService","$scope", function(LinkService, $
 
 myApp.controller("tagCtrl", ["LinkService", "$scope", "$stateParams", function(LinkService, $scope, $stateParams){
 	$scope.title = "TAG"
+
+	$scope.tagName = $stateParams.tagname;
 	$scope.links = LinkService.tagLinks($stateParams.tagname);
-	console.log($scope.links);
+
 }]);
 
-myApp.controller("tagsCtrl", ["LinkService", "$scope", function(LinkService, $scope){
+myApp.controller("tagsCtrl", ["$state", "LinkService", "$scope", function($state, LinkService, $scope){
 	$scope.title = "TAGS"
+
+	$scope.tagsList = LinkService.getTags();
+
+	$scope.goToTag = function(tagName){
+		$state.go('tag', {tagname: tagName});
+	}
 
 }]);

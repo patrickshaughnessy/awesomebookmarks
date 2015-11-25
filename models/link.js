@@ -6,7 +6,8 @@ var Link;
 
 var linkSchema = Schema({
 	link : String,
-	tags : Array
+	tags : Array,
+	timestamp: {type: Date, default: Date.now()}
 });
 
 Link = mongoose.model("Link", linkSchema)

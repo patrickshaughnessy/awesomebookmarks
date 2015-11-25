@@ -1,1 +1,10 @@
 <h2>{{title}}</h2>
+
+<ul>
+  <li ng-repeat="(tagName, links) in tagsList">
+    <a href="" ng-click="goToTag(tagName)">{{tagName}}</a>
+    <ul>
+      <li>{{links}}</li>
+    </ul>
+  </li>
+</ul>

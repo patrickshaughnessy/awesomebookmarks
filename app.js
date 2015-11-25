@@ -7,7 +7,14 @@ myApp.config(["$urlRouterProvider", "$stateProvider", function($urlRouterProvide
 		.state("main", {
 			url: "/",
 			templateUrl: "partials/main.html",
-			controller: "mainCtrl"
+			controller: "mainCtrl",
+			resolve: {
+				links: function($http){
+					return $http.get('http://localhost:3005/api/').then(function(res){
+						return res.data;
+					});
+				}
+			}
 		})
 		.state("newlink", {
 			url: "/newlink",
