@@ -1,5 +1,11 @@
 <h2> {{title}} </h2>
 
-<a href="#">www.awesomewebsite</a>
+<div ng-repeat="link in links">
+	<div>
+		<a href="">{{link.link}}</a>
+	</div>
+	<div>
+		<a ng-repeat="tag in link.tags" href="">{{tag}}</a>
+	</div>
+</div>
 
-<a href="#">tags</a>

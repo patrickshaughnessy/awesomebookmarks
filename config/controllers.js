@@ -2,8 +2,10 @@
 
 var myApp = angular.module("myApp");
 
-myApp.controller("mainCtrl", ["$scope", function($scope){
+myApp.controller("mainCtrl", ["LinkService","$scope", function(LinkService, $scope){
 	$scope.title = "MAIN HTMLE PAGE !!!"
+	$scope.links = LinkService.links
+	console.log($scope.links)
 
 }]);
 
@@ -14,8 +16,9 @@ myApp.controller("newlinkCtrl", ["LinkService","$scope", function(LinkService, $
 		$scope.newLink.tags.push("");
 	}
 	$scope.submitForm = function(){
-			console.log($scope.newLink);
-		//LinkService.addLink
+		console.log($scope.newLink);
+		LinkService.addLink($scope.newLink)
+		$scope.newLink = {tags: []};
 	}
 
 }]);
