@@ -1,5 +1,5 @@
 "use strict";
-var myApp = angular.module("myApp", ["ui.router"]);
+var myApp = angular.module("myApp", ["ui.router", 'xeditable']);
 
 myApp.config(["$urlRouterProvider", "$stateProvider", function($urlRouterProvider, $stateProvider){
 	$urlRouterProvider.otherwise("/");
@@ -30,3 +30,7 @@ myApp.config(["$urlRouterProvider", "$stateProvider", function($urlRouterProvide
 			controller: "tagCtrl"
 		})
 }]);
+
+myApp.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+});

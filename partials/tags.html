@@ -3,24 +3,31 @@
 <div class="row">
   <div class="col-xs-12 tagsArea">
     <div class="row">
-      <div class="col-xs-3" ng-repeat="(tagName, links) in tagsList">
 
-        <div class="editingDiv" ng-dblclick="startEditing(tagName)">
+      {{something}}
+      <div class="col-xs-3" ng-repeat="(tagName, links) in tagsList track by $index">
 
-          <span ng-hide="tagName.editing">{{tagsList.tagName}}</span>
-          <form ng-submit="doneEditing(tagName)" ng-show="tagName.editing">
-            <input type="text" ng-model="tagName" ng-blur="doneEditing(tagName)" ng-focus="tagName === editedTag">
-          </form>
+        <!-- <div class="editingDiv" ng-dblclick="startEditing(tagName)"> -->
+        <div class="editingDiv">
 
+          <!-- <div  >
+            <h3 ng-model="something" ng-dblclick="startEditing($index, tagName)">{{tagName}} -- {{$index}}</h3>
+          </div>
+          <div>
+            <h3  ng-show="{{something}}">unhidden</h3>
+          </div> -->
+          <!-- <div ng-hide="notEditing(clicked(tagName))">
+            <input type="text" ng-value="tagName">
+          </div> -->
 
+            <h3 editable-text="tagName">{{tagName}}</h3>
 
-          <!-- <h3>{{tagName}}</h3>
           <button class="btn btn-primary" type="button" ui-sref='.links({tagname: tagName})'>
             <span class="badge" ng-model="length">{{length(links)}}</span>
           </button>
           <a href="">
             <i class="fa fa-trash-o" ng-hide="showTrash(length(links))"></i>
-          </a> -->
+          </a>
         </div>
 
       </div>

@@ -14,7 +14,7 @@ myApp.controller("mainCtrl", ["$state", "LinkService", "$scope", function($state
 		console.log($scope.links);
 	})
 
-	$scope.links = LinkService.links;
+	// $scope.links = LinkService.links;
 
 	$scope.customOrderFunction = function(link){
 		var date = Date.now();
@@ -53,21 +53,19 @@ myApp.controller("tagsCtrl", ["$state", "LinkService", "$scope", function($state
 	$scope.title = "TAGS"
 
 	LinkService.populateData()
-
+	$scope.tagslist;
 	$scope.$watchCollection(function(){
 		return LinkService.links;
 	}, function(links){
 		$scope.links = LinkService.links;
+		$scope.tagsList = LinkService.getTags();
+		console.log('tagslist', $scope.tagsList)
 	})
 
-	$scope.tagsList = LinkService.getTags();
-	console.log('tagslist', $scope.tagsList);
 
 	$scope.goToTag = function(tagName){
 		$state.go('tag', {tagname: tagName});
 	}
-
-	// $scope.showTrash = false;
 
 	$scope.length = function(link){
 		if (link[0]){
@@ -85,17 +83,16 @@ myApp.controller("tagsCtrl", ["$state", "LinkService", "$scope", function($state
 		}
 	}
 
-	$scope.editedTag = null;
-	
-	$scope.startEditing = function(tagName){
-		tagName.editing = true;
-		$scope.editedItem = tagName;
-	}
 
-	$scope.doneEditing = function(tagName){
-		tagName.editing = false;
-		$scope.editedItem = null;
-	}
 
+	// $scope.notEditing = function(tagName){
+	// 		console.log('inside notEditing', tagName);
+	//
+	// }
+	//
+	$scope.startEditing = function(index, tagName){
+		console.log($scope.tagsList[tagName], index)
+
+	}
 
 }]);

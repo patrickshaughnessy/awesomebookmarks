@@ -35,16 +35,10 @@ myApp.service("LinkService", ["$http", function($http){
 	}
 
 	this.getTags = function(){
+		console.log('getting tags')
 		var tagsList = {};
 		(this.links).forEach(function(link){
 			link.tags.forEach(function(tag){
-				// if (!link.link){
-				// 	return;
-				// } else if (tagsList[tag]){
-				// 	tagsList[tag].concat(link.link)
-				// } else {
-				// 	tagsList[tag] = [link.link]
-				// }
 				tagsList[tag] = tagsList[tag] ? tagsList[tag].concat(link.link) : [link.link]
 			})
 		})
