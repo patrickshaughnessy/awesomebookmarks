@@ -2,14 +2,33 @@
 
 <div class="row">
   <div class="col-xs-12 tagsArea">
-    <button class="btn btn-primary" type="button" ng-repeat="(tagName, links) in tagsList">
-      {{tagName}} <span class="badge">{{links.length}}</span>
-    </button>
+    <div class="row">
+      <div class="col-xs-3" ng-repeat="(tagName, links) in tagsList">
+
+        <div class="editingDiv" ng-dblclick="startEditing(tagName)">
+
+          <span ng-hide="tagName.editing">{{tagsList.tagName}}</span>
+          <form ng-submit="doneEditing(tagName)" ng-show="tagName.editing">
+            <input type="text" ng-model="tagName" ng-blur="doneEditing(tagName)" ng-focus="tagName === editedTag">
+          </form>
+
+
+
+          <!-- <h3>{{tagName}}</h3>
+          <button class="btn btn-primary" type="button" ui-sref='.links({tagname: tagName})'>
+            <span class="badge" ng-model="length">{{length(links)}}</span>
+          </button>
+          <a href="">
+            <i class="fa fa-trash-o" ng-hide="showTrash(length(links))"></i>
+          </a> -->
+        </div>
+
+      </div>
+    </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12 tagsLinksArea" ng-model="links">
-    {{links}}
+  <div class="col-xs-12 tagsLinksArea" ui-view>
   </div>
 </div>
 

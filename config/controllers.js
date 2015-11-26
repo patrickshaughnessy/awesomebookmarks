@@ -2,10 +2,24 @@
 
 var myApp = angular.module("myApp");
 
-myApp.controller("mainCtrl", ["$state", "links", "LinkService", "$scope", function($state, links, LinkService, $scope){
+myApp.controller("mainCtrl", ["$state", "LinkService", "$scope", function($state, LinkService, $scope){
 	$scope.title = "Check out all your links below:"
-	LinkService.links = links;
+
+	LinkService.populateData()
+
+	$scope.$watchCollection(function(){
+		return LinkService.links;
+	}, function(links){
+		$scope.links = LinkService.links;
+		console.log($scope.links);
+	})
+
 	$scope.links = LinkService.links;
+
+	$scope.customOrderFunction = function(link){
+		var date = Date.now();
+		return date - link;
+	}
 
 	$scope.goToTag = function(tagName){
 		$state.go('tag', {tagname: tagName});
@@ -38,10 +52,50 @@ myApp.controller("tagCtrl", ["LinkService", "$scope", "$stateParams", function(L
 myApp.controller("tagsCtrl", ["$state", "LinkService", "$scope", function($state, LinkService, $scope){
 	$scope.title = "TAGS"
 
+	LinkService.populateData()
+
+	$scope.$watchCollection(function(){
+		return LinkService.links;
+	}, function(links){
+		$scope.links = LinkService.links;
+	})
+
 	$scope.tagsList = LinkService.getTags();
+	console.log('tagslist', $scope.tagsList);
 
 	$scope.goToTag = function(tagName){
 		$state.go('tag', {tagname: tagName});
 	}
+
+	// $scope.showTrash = false;
+
+	$scope.length = function(link){
+		if (link[0]){
+			return link.length
+		} else {
+			return '0'
+		}
+	}
+
+	$scope.showTrash = function(link){
+		if ($scope.length(link) === '0'){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	$scope.editedTag = null;
+	
+	$scope.startEditing = function(tagName){
+		tagName.editing = true;
+		$scope.editedItem = tagName;
+	}
+
+	$scope.doneEditing = function(tagName){
+		tagName.editing = false;
+		$scope.editedItem = null;
+	}
+
 
 }]);

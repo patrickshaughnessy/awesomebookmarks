@@ -6,9 +6,9 @@ var Link;
 
 var linkSchema = Schema({
 	link : String,
-	tags : Array,
-	timestamp: {type: Date, default: Date.now()}
-});
+	tags : [{name: String, editing: Boolean}]
+},
+{ timestamps: { createdAt: 'created_at' } });
 
 Link = mongoose.model("Link", linkSchema)
 

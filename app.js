@@ -7,14 +7,7 @@ myApp.config(["$urlRouterProvider", "$stateProvider", function($urlRouterProvide
 		.state("main", {
 			url: "/",
 			templateUrl: "partials/main.html",
-			controller: "mainCtrl",
-			resolve: {
-				links: function($http){
-					return $http.get('http://localhost:3005/api/').then(function(res){
-						return res.data;
-					});
-				}
-			}
+			controller: "mainCtrl"
 		})
 		.state("newlink", {
 			url: "/newlink",
@@ -30,5 +23,10 @@ myApp.config(["$urlRouterProvider", "$stateProvider", function($urlRouterProvide
 			url: "/tags",
 			templateUrl: "partials/tags.html",
 			controller: "tagsCtrl"
+		})
+		.state("tags.links", {
+			url: "/:tagname",
+			templateUrl: "partials/tags.links.html",
+			controller: "tagCtrl"
 		})
 }]);
