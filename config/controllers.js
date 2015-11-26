@@ -54,6 +54,7 @@ myApp.controller("tagsCtrl", ["$state", "LinkService", "$scope", function($state
 
 	LinkService.populateData()
 	$scope.tagslist;
+
 	$scope.$watchCollection(function(){
 		return LinkService.links;
 	}, function(links){
@@ -84,15 +85,11 @@ myApp.controller("tagsCtrl", ["$state", "LinkService", "$scope", function($state
 	}
 
 
+	$scope.updateTag = function(link) {
+		console.log($scope.tagsList, link);
 
-	// $scope.notEditing = function(tagName){
-	// 		console.log('inside notEditing', tagName);
-	//
-	// }
-	//
-	$scope.startEditing = function(index, tagName){
-		console.log($scope.tagsList[tagName], index)
-
-	}
+		// LinkService.updateTag(data, link);
+		// return $http.post('/updateUser', {id: $scope.user.id, name: data});
+	};
 
 }]);

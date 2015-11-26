@@ -46,8 +46,12 @@ myApp.service("LinkService", ["$http", function($http){
 		return tagsList;
 	}
 
-	this.editTag = function(tagName) {
-		console.log('here', tagName);
+	this.updateTag = function(data, link) {
+		var payload = {
+			link: link,
+			tagname: data
+		};
+
 
 	}
 
