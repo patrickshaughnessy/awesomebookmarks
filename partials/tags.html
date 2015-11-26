@@ -1,10 +1,24 @@
 <h2>{{title}}</h2>
 
-<ul>
+<div class="row">
+  <div class="col-xs-12 tagsArea">
+    <button class="btn btn-primary" type="button" ng-repeat="(tagName, links) in tagsList">
+      {{tagName}} <span class="badge">{{links.length}}</span>
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 tagsLinksArea" ng-model="links">
+    {{links}}
+  </div>
+</div>
+
+
+<!-- <ul>
   <li ng-repeat="(tagName, links) in tagsList">
     <a href="" ng-click="goToTag(tagName)">{{tagName}}</a>
     <ul>
       <li>{{links}}</li>
     </ul>
   </li>
-</ul>
+</ul> -->

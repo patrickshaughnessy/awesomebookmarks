@@ -5,6 +5,7 @@
 	<title>awesome Bookmarks</title>
 
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
 
 	<script src="bower_components/angular/angular.min.js"></script>
 	<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -14,13 +15,21 @@
 
 </head>
 <body>
-	<div class="heading">
-		<h1> AWESOME BOOMARKS!!!!!</h1>
-		<button class="btn btn-default" ui-sref="main">main</button>
-		<button class="btn btn-default" ui-sref="tags">tags</button>
-		<button class="btn btn-default" ui-sref="newlink">new Link or tag</button>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 center">
+				<h1> AWESOME BOOMARKS!!!!!</h1>
+			</div>
+			<div class="col-xs-3">
+				<ul class="nav nav-pills nav-stacked">
+				  <li role="presentation" class="active"><a ui-sref="main">Main</a></li>
+				  <li role="presentation"><a ui-sref="tags">See All Tags</a></li>
+				  <li role="presentation"><a ui-sref="newlink">Add A New Link</a></li>
+				</ul>
+			</div>
+			<div ui-view class="col-xs-9"></div>
+		</div>
 	</div>
-	<div ui-view></div>
 
 
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>

@@ -3,7 +3,7 @@
 var myApp = angular.module("myApp");
 
 myApp.controller("mainCtrl", ["$state", "links", "LinkService", "$scope", function($state, links, LinkService, $scope){
-	$scope.title = "MAIN HTMLE PAGE !!!"
+	$scope.title = "Check out all your links below:"
 	LinkService.links = links;
 	$scope.links = LinkService.links;
 

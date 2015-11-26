@@ -1,14 +1,9 @@
-<h2> {{title}} </h2>
+<h2 class='center'>{{title}}</h2>
 
-<div ng-repeat="link in links">
-	<div>
-		<a href="">{{link.link}}</a>
-	</div>
-	<div>
-		<ul>
-			<li ng-repeat="tag in link.tags">
-				<button class="btn btn-default" ng-click="goToTag(tag)">{{tag}}</button>
-			</li>
-		</ul>
+<div class="row">
+	<div class="col-xs-12 mainLink" ng-repeat="link in links">
+		<a href="{{link.link}}">{{link.link}}</a>
+		<br>
+		<span ng-repeat="tag in link.tags" class="label label-default" ng-click="goToTag(tag)">{{tag}}</span>
 	</div>
 </div>
