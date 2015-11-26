@@ -22,15 +22,25 @@ myApp.config(["$urlRouterProvider", "$stateProvider", function($urlRouterProvide
 		.state("tags", {
 			url: "/tags",
 			templateUrl: "partials/tags.html",
-			controller: "tagsCtrl"
+			controller: "tagsCtrl2"
 		})
 		.state("tags.links", {
 			url: "/:tagname",
 			templateUrl: "partials/tags.links.html",
 			controller: "tagCtrl"
 		})
+		// .state("tags", {
+		// 	url: "/tags",
+		// 	templateUrl: "partials/tags.html",
+		// 	controller: "tagsCtrl"
+		// })
+		// .state("tags.links", {
+		// 	url: "/:tagname",
+		// 	templateUrl: "partials/tags.links.html",
+		// 	controller: "tagCtrl"
+		// })
 }]);
 
-myApp.run(function(editableOptions) {
+myApp.run(["editableOptions", function(editableOptions) {
   editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
-});
+}]);

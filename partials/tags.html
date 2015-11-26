@@ -1,6 +1,6 @@
 <h2>{{title}}</h2>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-xs-12 tagsArea">
     <div class="row">
       <div class="col-xs-3" ng-repeat="(tagName, links) in tagsList track by $index">
@@ -23,14 +23,32 @@
 <div class="row">
   <div class="col-xs-12 tagsLinksArea" ui-view>
   </div>
+</div> -->
+
+<div class="row">
+  <div class="col-xs-12 tagsArea">
+    <div class="row">
+      <div class="col-xs-3" ng-repeat="tag in tags">
+        <ul>
+
+          <li>
+            <h3 editable-text="tag.tag" onbeforesave="updateTag($data, tag)">{{tag.tag}}</h3>
+            <button class="btn btn-primary" type="button" ui-sref='.links({tagname: tag.tag})'>
+               <!-- <span class="badge" ng-model="length">{{length(links)}}</span> -->
+            </button>
+            <!-- <a href="">
+              <i class="fa fa-trash-o" ng-hide="showTrash(length(links))"></i>
+            </a> -->
+
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
-
-<!-- <ul>
-  <li ng-repeat="(tagName, links) in tagsList">
-    <a href="" ng-click="goToTag(tagName)">{{tagName}}</a>
-    <ul>
-      <li>{{links}}</li>
-    </ul>
-  </li>
-</ul> -->
+<div class="row">
+  <div class="col-xs-12 tagsLinksArea" ui-view>
+  </div>
+</div>

@@ -6,7 +6,7 @@ var Link;
 
 var linkSchema = Schema({
 	link : String,
-	tags : Array,
+	tags : Array
 },
 { timestamps: { createdAt: 'created_at' } });
 

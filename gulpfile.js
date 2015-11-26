@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 var del = require('del');
 var run = require('gulp-run');
@@ -8,12 +10,11 @@ var runSequence = require('run-sequence');
 
 // still need to annotate config and link to app.js
 
-gulp.task('default', ['build']);
+gulp.task('default', ['clean', 'js']);
 
 gulp.task('build', function(){
   runSequence('clean',
-              'js',
-              'watch'
+              'js'
             );
 })
 
@@ -22,10 +23,11 @@ gulp.task('clean', function(){
 });
 
 gulp.task('js', function(){
-  return gulp.src('config/*.js')
-    .pipe(concat('bundle.js'))
+  console.log('in js');
+  return gulp.src('./config/*.js')
     .pipe(uglify())
-    .pipe(gulp.dest('dist'));
+    .pipe(concat('bundle.js'))
+    .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('watch', function(){

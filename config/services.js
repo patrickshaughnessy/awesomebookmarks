@@ -5,6 +5,7 @@ var myApp = angular.module("myApp");
 myApp.service("LinkService", ["$http", function($http){
 
 	this.links = [];
+	this.tags = [];
 
 	this.populateData = function(){
 		if (!this.links.length){
@@ -46,13 +47,23 @@ myApp.service("LinkService", ["$http", function($http){
 		return tagsList;
 	}
 
-	this.updateTag = function(data, link) {
-		var payload = {
-			link: link,
-			tagname: data
-		};
+	this.updateTag = function(data, tag) {
+		console.log(data, tag);
+		tag.tag = data;
+		$http.post('http://localhost:3005/api/tags', tag).then(res =>{
+			// find tag in tags array and change;
+			console.log('finished', res);
+		})
+	}
 
-
+	this.populateTags = function(){
+		if (!this.tags.length){
+			return $http.get('http://localhost:3005/api/tags').then(res => {
+				console.log(res);
+				this.tags = res.data;
+			})
+		}
+		return this.tags;
 	}
 
 }]);
